@@ -49,6 +49,7 @@ body {
     line-height: 1.8;
     overflow-x: hidden;
     background: var(--base-gradient) fixed;
+    background-color: rgba(8, 21, 20, 1); /* Matching the darkest color from gradient */
     position: relative;
 }
 
@@ -64,6 +65,11 @@ body::before {
     z-index: 0;
 }
 
+/* Ensure html has the same background color */
+html {
+    background-color: rgba(8, 21, 20, 1);
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
     font-weight: 600;
@@ -74,20 +80,51 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-title {
     position: relative;
+    margin-bottom: 40px;
+    font-weight: 600;
+    font-size: 2.8rem;
+    font-family: var(--heading-font);
+    text-align: center;
     color: var(--light);
-    margin-bottom: 30px;
-    font-weight: 700;
 }
 
-.section-title::after {
+.section-title::before {
     content: '';
     position: absolute;
     left: 50%;
     bottom: -15px;
     transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background-color: var(--accent);
+    width: 180px;
+    height: 2px;
+    background: linear-gradient(90deg,
+        rgba(162, 133, 75, 0),
+        rgba(162, 133, 75, 0.2),
+        rgba(162, 133, 75, 0.4),
+        rgba(162, 133, 75, 0.8),
+        rgba(162, 133, 75, 1),
+        rgba(162, 133, 75, 1),
+        rgba(162, 133, 75, 1),
+        rgba(162, 133, 75, 0.8),
+        rgba(162, 133, 75, 0.4),
+        rgba(162, 133, 75, 0.2),
+        rgba(162, 133, 75, 0)
+    );
+    box-shadow: 0 0 10px rgba(162, 133, 75, 0.3);
+}
+
+/* Remove the after pseudo-element since we're not using it anymore */
+.section-title::after {
+    display: none;
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (background-clip: text) {
+    .section-title {
+        background: none;
+        -webkit-text-fill-color: var(--light);
+        text-fill-color: var(--light);
+        animation: none;
+    }
 }
 
 .lead {
@@ -669,6 +706,13 @@ section:not(#hero)::before {
     section {
         padding: 80px 0;
     }
+
+    .section-title {
+        font-size: 2.4rem;
+    }
+    .section-title::before {
+        width: 160px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -687,7 +731,11 @@ section:not(#hero)::before {
     }
     
     .section-title {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
+        margin-bottom: 35px;
+    }
+    .section-title::before {
+        width: 140px;
     }
     
     .workshop-card img {
@@ -714,6 +762,14 @@ section:not(#hero)::before {
 
     section {
         padding: 50px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    .section-title::before {
+        width: 120px;
     }
 }
 
