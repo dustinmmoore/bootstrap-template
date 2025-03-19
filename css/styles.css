@@ -41,6 +41,28 @@
         rgba(8, 21, 20, 0.15),
         rgba(31, 67, 63, 0.1)
     );
+
+    /* Title Gradient */
+    --title-gradient: linear-gradient(
+        90deg,
+        var(--light) 0%,
+        var(--accent) 25%,
+        var(--light) 50%,
+        var(--accent) 75%,
+        var(--light) 100%
+    );
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 body {
@@ -76,6 +98,13 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--light);
     line-height: 1.3;
     letter-spacing: 1px;
+    background: var(--title-gradient);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    animation: gradient 8s ease infinite;
 }
 
 .section-title {
@@ -85,7 +114,13 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2.8rem;
     font-family: var(--heading-font);
     text-align: center;
-    color: var(--light);
+    background: var(--title-gradient);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    animation: gradient 8s ease infinite;
 }
 
 .section-title::before {
@@ -119,7 +154,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Fallback for browsers that don't support background-clip */
 @supports not (background-clip: text) {
-    .section-title {
+    .section-title, h1, h2, h3, h4, h5, h6 {
         background: none;
         -webkit-text-fill-color: var(--light);
         text-fill-color: var(--light);
@@ -352,9 +387,66 @@ a.btn-primary:hover,
     border: 1px solid rgba(162, 133, 75, 0.3);
 }
 
-.hero-card h3 {
-    color: var(--accent);
-    margin-bottom: 20px;
+/* Card Title Styles - Main definition */
+.hero-card h3, 
+.workshop-content h4, 
+.event-card h3,
+.testimonial-content h3,
+.pastor-title,
+.workshop-card h4,
+.testimonial-card h3 {
+    position: relative;
+    margin-bottom: 45px;
+    padding-bottom: 25px;
+    background: var(--title-gradient);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    animation: gradient 8s ease infinite;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Card Title Dividers */
+.hero-card h3::before, 
+.workshop-content h4::before, 
+.event-card h3::before,
+.testimonial-content h3::before,
+.pastor-title::before,
+.workshop-card h4::before,
+.testimonial-card h3::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 2px;
+    background: linear-gradient(90deg,
+        rgba(162, 133, 75, 0),
+        rgba(162, 133, 75, 0.2),
+        rgba(162, 133, 75, 0.4),
+        rgba(162, 133, 75, 0.8),
+        rgba(162, 133, 75, 1),
+        rgba(162, 133, 75, 1),
+        rgba(162, 133, 75, 1),
+        rgba(162, 133, 75, 0.8),
+        rgba(162, 133, 75, 0.4),
+        rgba(162, 133, 75, 0.2),
+        rgba(162, 133, 75, 0)
+    );
+    box-shadow: 0 0 10px rgba(162, 133, 75, 0.3);
+}
+
+/* Remove all overriding styles */
+.event-card h3,
+.workshop-content h4,
+.testimonial-content h3,
+.pastor-title,
+.workshop-card h4 {
+    color: inherit;
 }
 
 .hero-card.alt {
@@ -443,14 +535,6 @@ a.btn-primary:hover,
     border: 1px solid rgba(162, 133, 75, 0.3);
 }
 
-.pastor-title,
-.workshop-card h4,
-.event-card h3 {
-    color: var(--accent);
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
 .testimonial-date,
 .event-date {
     color: rgba(162, 133, 75, 0.8);
@@ -513,12 +597,6 @@ a.btn-primary:hover,
     border-color: var(--accent);
 }
 
-.pastor-title {
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 10px;
-}
-
 .pastor-quote {
     font-style: italic;
     font-family: var(--heading-font);
@@ -540,6 +618,7 @@ a.btn-primary:hover,
     transition: all 0.3s ease;
     height: 100%;
     border: 1px solid rgba(162, 133, 75, 0.3);
+    text-align: center;
 }
 
 .event-card:hover {
@@ -548,20 +627,32 @@ a.btn-primary:hover,
     border-color: var(--accent);
 }
 
-.event-date {
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 15px;
+.event-card p {
+    text-align: center;
 }
 
 .event-detail {
-    margin-bottom: 10px;
     color: var(--light);
+    opacity: 0.9;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.event-date {
+    color: rgba(162, 133, 75, 0.8);
+    font-size: 0.9rem;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.event-detail i {
+    margin-right: 5px;
 }
 
 .event-card h3 {
-    margin-bottom: 20px;
-    color: var(--accent);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
 }
 
 .event-card .btn {
@@ -577,6 +668,7 @@ a.btn-primary:hover,
     height: 100%;
     background-color: var(--primary-dark);
     border: 1px solid rgba(162, 133, 75, 0.3);
+    padding: 0;
 }
 
 .workshop-card:hover {
@@ -586,23 +678,41 @@ a.btn-primary:hover,
 }
 
 .workshop-card img {
-    height: 200px;
     width: 100%;
+    height: 250px;
     object-fit: cover;
+    border-radius: 0;
+    border: none;
+    margin: 0;
+    display: block;
 }
 
+/* Update workshop content spacing */
 .workshop-content {
-    padding: 20px;
+    padding: 25px;
     text-align: center;
+    border-top: 1px solid rgba(162, 133, 75, 0.3);
 }
 
 .workshop-content h4 {
-    color: var(--accent);
-    margin-bottom: 15px;
+    margin-bottom: 45px;
+    padding-bottom: 25px;
 }
 
 .workshop-content p {
     color: var(--light);
+    margin-bottom: 15px;
+    padding: 0 15px;
+}
+
+/* Ensure proper spacing after dividers */
+.hero-card h3, 
+.workshop-content h4, 
+.event-card h3,
+.testimonial-content h3,
+.pastor-title {
+    margin-bottom: 45px;
+    padding-bottom: 25px;
 }
 
 /* Contact Section */
@@ -774,13 +884,6 @@ section:not(#hero)::before {
 }
 
 /* Cards */
-.hero-card h3, 
-.workshop-content h4, 
-.event-card h3,
-.testimonial-content h3 {
-    color: var(--accent);
-}
-
 .workshop-content p, 
 .testimonial-content p,
 .pastor-bio p,
