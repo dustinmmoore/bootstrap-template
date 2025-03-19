@@ -1,0 +1,747 @@
+/* 
+* Dean Herman Ministries Bootstrap Template
+* Custom styles to match deanhermanministries.com
+*/
+
+/* Global Styles */
+:root {
+    /* Core Colors */
+    --dark: #0f2220;          /* Darker base */
+    --accent: #a2854b;        /* Gold accent */
+    --light: #d6c9ae;         /* Light neutral/tan */
+    --dark-accent: #8b714a;   /* Darker gold */
+    --light-accent: #e2d7c2;  /* Lighter neutral */
+    
+    /* Extended Color Palette */
+    --primary-dark: #081514;  /* Even darker */
+    --primary: #0f2220;       /* Main dark */
+    --primary-light: #1F433F; /* Original teal */
+    --text-dark: #0f2220;
+    --text-light: #d6c9ae;    /* Updated to tan */
+    --text-muted: #d6c9ae;    /* Updated to tan */
+    
+    /* Font Families */
+    --heading-font: 'Playfair Display', serif;
+    --body-font: 'Open Sans', sans-serif;
+
+    /* Gradients */
+    --gradient-1: linear-gradient(135deg, 
+        rgba(8, 21, 20, 0.97),
+        rgba(15, 34, 32, 0.95)
+    );
+    --gradient-2: linear-gradient(135deg, 
+        rgba(15, 34, 32, 0.98),
+        rgba(31, 67, 63, 0.95)
+    );
+    --overlay: rgba(8, 21, 20, 0.7);
+}
+
+body {
+    font-family: var(--body-font);
+    color: var(--text-light);
+    line-height: 1.8;
+    overflow-x: hidden;
+    background-color: var(--dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    font-weight: 600;
+    color: var(--light);
+    line-height: 1.3;
+    letter-spacing: 1px;
+}
+
+.section-title {
+    position: relative;
+    color: var(--light);
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent);
+}
+
+.lead {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--light);
+}
+
+.btn {
+    padding: 12px 25px;
+    font-weight: 700;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-primary, 
+a.btn-primary,
+.hero-card .btn-primary,
+.event-card .btn-primary,
+.contact-form .btn-primary {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #000000 !important; /* Force black text on all primary buttons */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover, 
+a.btn-primary:hover,
+.hero-card .btn-primary:hover,
+.event-card .btn-primary:hover,
+.contact-form .btn-primary:hover {
+    background-color: var(--light);
+    border-color: var(--light);
+    color: #000000 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--primary-light);
+    border-color: var(--primary-light);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--light);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation */
+.navbar {
+    background-color: rgba(8, 21, 20, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px 0;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(162, 133, 75, 0.5);
+    z-index: 1000;
+}
+
+.navbar.navbar-scrolled {
+    background-color: rgba(8, 21, 20, 0.98);
+    padding: 10px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    font-family: var(--heading-font);
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--light);
+}
+
+.nav-link {
+    font-family: var(--body-font);
+    color: var(--light);
+    font-weight: 500;
+    margin: 0 10px;
+    position: relative;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    letter-spacing: 0.5px;
+}
+
+.nav-link:hover, 
+.nav-link.active {
+    color: var(--accent) !important;
+}
+
+.nav-link.active {
+    font-weight: 500;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+    opacity: 0;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    opacity: 1;
+}
+
+.nav-link.active::after {
+    width: 100%;
+    height: 2px;
+    opacity: 1;
+}
+
+/* Fix for link states */
+.nav-link:visited,
+.nav-link:focus {
+    color: var(--light);
+}
+
+.nav-link:active,
+.nav-link.active:visited,
+.nav-link.active:focus {
+    color: var(--accent) !important;
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+    padding: 0;
+}
+
+.navbar-toggler i {
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Hero Section */
+#hero {
+    background: linear-gradient(rgba(8, 21, 20, 0.5), rgba(15, 34, 32, 0.4)), url('../img/DSC07293-4K.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    min-height: 600px;
+    color: var(--light);
+    margin-top: -76px;
+    padding-top: 120px;
+    border-bottom: 0.25px solid rgba(210, 180, 140, 0.7);
+    border-top: none;
+}
+
+#hero h1 {
+    font-size: 3.5rem;
+    color: var(--light);
+    margin-bottom: 2rem;
+}
+
+.hero-card {
+    background-color: rgba(15, 34, 32, 0.85);
+    border-radius: 10px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    border: 1px solid rgba(162, 133, 75, 0.3);
+}
+
+.hero-card h3 {
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.hero-card.alt {
+    background-color: rgba(162, 133, 75, 0.25);
+}
+
+.hero-card.alt h3 {
+    color: var(--accent);
+}
+
+.hero-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent);
+}
+
+/* Testimonials Section */
+.testimonial-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    background-color: var(--primary-dark);
+    height: 100%;
+    border: 1px solid rgba(162, 133, 75, 0.3);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(8, 21, 20, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.video-overlay i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: var(--accent);
+}
+
+.testimonial-content {
+    padding: 20px;
+}
+
+.testimonial-date {
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.testimonial-type {
+    color: var(--light-accent);
+    font-style: italic;
+}
+
+/* Pastor Section */
+.pastor-section {
+    padding: 80px 0;
+}
+
+.pastor-image {
+    max-width: 300px;
+    border: 5px solid var(--primary-dark);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pastor-title {
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.pastor-quote {
+    font-style: italic;
+    font-family: var(--heading-font);
+    color: var(--light);
+}
+
+.pastor-bio p {
+    margin-bottom: 20px;
+    color: var(--light);
+}
+
+/* Events Section */
+.event-card {
+    background-color: var(--primary-dark);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 1px solid rgba(162, 133, 75, 0.3);
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent);
+}
+
+.event-date {
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.event-detail {
+    margin-bottom: 10px;
+    color: var(--light);
+}
+
+.event-card h3 {
+    margin-bottom: 20px;
+    color: var(--accent);
+}
+
+.event-card .btn {
+    margin-top: 15px;
+}
+
+/* Workshops Section */
+.workshop-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    height: 100%;
+    background-color: var(--primary-dark);
+    border: 1px solid rgba(162, 133, 75, 0.3);
+}
+
+.workshop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent);
+}
+
+.workshop-card img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.workshop-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.workshop-content h4 {
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.workshop-content p {
+    color: var(--light);
+}
+
+/* Contact Section */
+.logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.contact-email {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark);
+    color: var(--light);
+    padding: 30px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-logo {
+    max-height: 80px;
+    margin-bottom: 10px;
+}
+
+footer .contact-email {
+    color: var(--light);
+    margin: 0;
+    font-size: 1rem;
+}
+
+footer .contact-email i {
+    color: var(--accent);
+}
+
+/* Section styles */
+section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 0;
+    border-top: 0.25px solid rgba(162, 133, 75, 0.5); /* Match navbar border */
+}
+
+/* First section should not have top border */
+#hero {
+    border-top: none;
+}
+
+/* Background sections with gradients instead of hard colors */
+#about, #pastor, #workshops {
+    background: var(--gradient-2);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+#testimonials, #events, #contact {
+    background: var(--gradient-1);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Section content container */
+section .container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    #hero h1 {
+        font-size: 2.8rem;
+    }
+    
+    .pastor-image {
+        max-width: 250px;
+        margin-bottom: 30px;
+    }
+
+    section {
+        padding: 80px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero {
+        min-height: 500px;
+        height: auto;
+        padding: 120px 0 60px;
+    }
+    
+    #hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .workshop-card img {
+        height: 180px;
+    }
+
+    section {
+        padding: 70px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    #hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .pastor-image {
+        max-width: 200px;
+    }
+    
+    .workshop-card img {
+        height: 160px;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+}
+
+/* Cards */
+.hero-card h3, 
+.workshop-content h4, 
+.event-card h3,
+.testimonial-content h3 {
+    color: var(--accent);
+}
+
+.workshop-content p, 
+.testimonial-content p,
+.pastor-bio p,
+.event-detail {
+    color: var(--light);
+}
+
+/* Code elements in placeholder.html */
+code {
+    background-color: var(--primary-dark);
+    color: var(--accent);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* Contact Form */
+.contact-form {
+    background-color: var(--primary-dark);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(162, 133, 75, 0.3);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.contact-form:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    animation: glow 2s infinite;
+}
+
+.contact-form .form-control {
+    background-color: rgba(8, 21, 20, 0.8);
+    border: 1px solid rgba(162, 133, 75, 0.3);
+    color: var(--light);
+    padding: 12px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.contact-form .form-control:focus {
+    background-color: rgba(8, 21, 20, 0.9);
+    border-color: var(--accent);
+    color: var(--light);
+    box-shadow: 0 0 10px rgba(162, 133, 75, 0.3);
+    outline: none;
+}
+
+.contact-form .form-control::placeholder {
+    color: rgba(214, 201, 174, 0.7);
+    font-size: 0.95rem;
+}
+
+.contact-form .btn {
+    margin-top: 15px;
+    width: 100%;
+    font-weight: 700;
+    color: #000000;
+}
+
+/* Make all links gold */
+a {
+    color: var(--accent);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--light-accent);
+}
+
+a:visited,
+a:focus,
+a:active {
+    color: var(--accent);
+}
+
+.gold-color {
+    color: var(--accent) !important;
+}
+
+.gold-color:hover {
+    color: var(--accent) !important;
+}
+
+/* Navigation links */
+.navbar-nav .nav-link {
+    color: var(--light);
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--accent);
+}
+
+/* Animations */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(162, 133, 75, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(162, 133, 75, 0.5);
+    }
+}
+
+.testimonial-card:hover,
+.event-card:hover,
+.workshop-card:hover,
+.hero-card:hover {
+    animation: glow 2s infinite;
+}
+
+/* Additional fixes for buttons in specific locations */
+.hero-card .btn,
+.event-card .btn {
+    color: #000000 !important;
+    font-weight: 700;
+}
+
+/* Critical button fixes for visibility - these will override other styles */
+a.btn.btn-primary,
+.btn.btn-primary,
+button.btn.btn-primary,
+input.btn.btn-primary,
+section .btn.btn-primary,
+.container .btn.btn-primary,
+.card .btn.btn-primary,
+.hero-card .btn.btn-primary,
+.event-card .btn.btn-primary,
+.workshop-card .btn.btn-primary {
+    color: #000000 !important; 
+    font-weight: 700;
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+a.btn.btn-primary:hover,
+.btn.btn-primary:hover,
+button.btn.btn-primary:hover,
+input.btn.btn-primary:hover,
+section .btn.btn-primary:hover,
+.container .btn.btn-primary:hover,
+.card .btn.btn-primary:hover,
+.hero-card .btn.btn-primary:hover,
+.event-card .btn.btn-primary:hover,
+.workshop-card .btn.btn-primary:hover {
+    color: #000000 !important;
+    background-color: var(--light);
+    border-color: var(--light);
+} 
