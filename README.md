@@ -25,15 +25,10 @@ A responsive Bootstrap template based on the [Dean Herman Ministries website](ht
 For this template to display properly, you'll need to add the following images to the `img` folder:
 
 - `hero-bg.jpg` - Hero section background (1920x1080px recommended)
-- `pastor-dean.jpg` - Pastor's photo (square format recommended)
+- `pastor.jpg` - Pastor's photo (square format recommended)
 - `logo.png` - Ministry logo
-- `video-placeholder.jpg` - Placeholder for video testimonials
-- `bible-study.jpg` - Bible study image
-- `prayer.jpg` - Prayer image
-- `youth.jpg` - Youth ministry image
-- `worship.jpg` - Worship service image
-- `community.jpg` - Community service image
-- `leadership.jpg` - Leadership training image
+- `testimonial1.jpg`, `testimonial2.jpg`, `testimonial3.jpg` - Testimonial images
+- `workshop1.jpg`, `workshop2.jpg`, `workshop3.jpg` - Workshop images
 
 The website will detect if these images are missing and display a notice with a link to instructions on how to add them.
 
@@ -92,4 +87,4 @@ Built with:
 - [Bootstrap 5](https://getbootstrap.com/)
 - [Font Awesome](https://fontawesome.com/)
 - [Google Fonts](https://fonts.google.com/)
-- Original design from [Dean Herman Ministries](https://www.deanhermanministries.com) 
+- Original design from [Dean Herman Ministries](https://www.deanhermanministries.com)
