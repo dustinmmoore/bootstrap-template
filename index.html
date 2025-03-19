@@ -276,7 +276,7 @@
             <div class="row mt-5">
                 <div class="col-md-6 mb-4">
                     <div class="contact-form h-100">
-                        <form action="https://formspree.io/f/xwplvqdv" method="POST" id="contactForm">
+                        <form action="https://formspree.io/f/xgvaonpy" method="POST" id="contactForm">
                             <div class="mb-3">
                                 <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                             </div>
@@ -285,13 +285,12 @@
                             </div>
                             <div class="mb-3">
                                 <label for="inquiryType" class="visually-hidden">Inquiry Type</label>
-                                <select id="inquiryType" name="inquiryType" class="form-control" aria-label="Select inquiry type">
-                                    <option selected disabled>Select Inquiry Type</option>
-                                    <option>Workshop Booking</option>
-                                    <option>Speaking Engagement</option>
-                                    <option>Prayer Request</option>
-                                    <option>Join Mailing List</option>
-                                    <option>Other</option>
+                                <select id="inquiryType" name="inquiryType" class="form-control" aria-label="Select inquiry type" required>
+                                    <option value="" selected disabled>Select Inquiry Type</option>
+                                    <option value="More Information">More Information</option>
+                                    <option value="Host a Workshop">Host a Workshop</option>
+                                    <option value="Old Testament Workshop">Old Testament Workshop</option>
+                                    <option value="New Testament Workshop">New Testament Workshop</option>
                                 </select>
                             </div>
                             <div class="mb-3">
