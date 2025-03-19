@@ -276,16 +276,16 @@
             <div class="row mt-5">
                 <div class="col-md-6 mb-4">
                     <div class="contact-form h-100">
-                        <form id="contactForm">
+                        <form action="https://formspree.io/f/xwplvqdv" method="POST" id="contactForm">
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Your Name" required>
+                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                             </div>
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Your Email" required>
+                                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="inquiryType" class="visually-hidden">Inquiry Type</label>
-                                <select id="inquiryType" class="form-control" aria-label="Select inquiry type">
+                                <select id="inquiryType" name="inquiryType" class="form-control" aria-label="Select inquiry type">
                                     <option selected disabled>Select Inquiry Type</option>
                                     <option>Workshop Booking</option>
                                     <option>Speaking Engagement</option>
@@ -295,7 +295,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                                <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Send Message</button>
                         </form>

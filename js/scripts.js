@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Ensure gold link color
     ensureGoldLinks();
+
+    // Initialize contact form
+    initContactForm();
 });
 
 /**
@@ -246,6 +249,65 @@ function ensureGoldLinks() {
         // Initialize the active link as gold
         if (link.classList.contains('active')) {
             link.classList.add('gold-color');
+        }
+    });
+}
+
+/**
+ * Initialize contact form handling
+ */
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Disable submit button and show loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Show success message
+                form.reset();
+                submitBtn.textContent = 'Message Sent!';
+                submitBtn.classList.remove('btn-primary');
+                submitBtn.classList.add('btn-success');
+
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.classList.remove('btn-success');
+                    submitBtn.classList.add('btn-primary');
+                    submitBtn.disabled = false;
+                }, 3000);
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            // Show error message
+            submitBtn.textContent = 'Error - Try Again';
+            submitBtn.classList.remove('btn-primary');
+            submitBtn.classList.add('btn-danger');
+
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.classList.remove('btn-danger');
+                submitBtn.classList.add('btn-primary');
+                submitBtn.disabled = false;
+            }, 3000);
         }
     });
 } 
