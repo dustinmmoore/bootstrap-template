@@ -332,7 +332,7 @@ a.btn-primary:hover,
 
 /* Hero Section */
 #hero {
-    background: var(--hero-overlay), url('../img/images/IMG_8064.webp');
+    background: var(--hero-overlay), url('../img/images/IMG_8064.jpg');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
