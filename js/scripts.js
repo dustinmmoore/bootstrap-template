@@ -21,6 +21,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize contact form
     initContactForm();
+
+    // Popup Ad Functionality
+    initializePopup();
+
+    // Back to Top Button
+    const backToTopButton = document.getElementById('backToTop');
+    
+    // Show button when user scrolls down 300px
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopButton.style.display = 'flex';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+    
+    // Scroll to top when button is clicked
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
 
 /**
@@ -310,4 +333,46 @@ function initContactForm() {
             }, 3000);
         }
     });
-} 
+}
+
+// Popup Ad Functionality
+function initializePopup() {
+    console.log('Page loaded, initializing popup...');
+    
+    const popupAd = document.getElementById('popupAd');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const closePopup = document.getElementById('closePopup');
+    
+    if (!popupAd || !popupOverlay || !closePopup) {
+        console.error('Popup elements not found!');
+        return;
+    }
+    
+    console.log('Popup elements found, setting up event listeners...');
+    
+    // Show popup after 1 second
+    setTimeout(function() {
+        console.log('Showing popup...');
+        popupAd.style.display = 'block';
+        popupOverlay.style.display = 'block';
+    }, 1000);
+    
+    // Close popup when clicking the close button
+    closePopup.addEventListener('click', function() {
+        console.log('Closing popup...');
+        popupAd.style.display = 'none';
+        popupOverlay.style.display = 'none';
+    });
+    
+    // Close popup when clicking the overlay
+    popupOverlay.addEventListener('click', function() {
+        console.log('Closing popup via overlay...');
+        popupAd.style.display = 'none';
+        popupOverlay.style.display = 'none';
+    });
+    
+    console.log('Popup initialization complete');
+}
+
+// Initialize popup when the page loads
+window.addEventListener('load', initializePopup); 
